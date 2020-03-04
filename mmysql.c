@@ -53,9 +53,12 @@ PTOTAL init_judge(MYSQL * mysql)
 		sprintf(msql,"update total set total = %2f , listcount = 0 where id = 1;",total); //you must set mysql table id = 1;
 		mysql_query(mysql,msql);	
 		printf("init success , welcome!\n");
+		ptotal->total = total;
+	}else
+	{
+		ptotal->total = atof(row[2]);
 	}
 	ptotal->listcount = atoi(row[1]);
-	ptotal->total = total;
 	return ptotal;
 }
 
